@@ -1,0 +1,9 @@
+{
+  "name": "vibe-coder-sim",
+  "version": "0.1.0",
+  "description": "Симулятор вайбкодера — idle-игра в духе симулятора блогера",
+  "scripts": {
+    "start": "npx --yes serve www -p 3456",
+    "dev": "npx --yes serve www -p 3456"
+  }
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0d1117" />
+  <title>Vibe Coder Simulator</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="top-bar">
+      <div class="brand">
+        <span class="brand-icon">&lt;/&gt;</span>
+        <h1>Vibe Coder</h1>
+      </div>
+      <div id="rank-badge" class="rank-badge">🐣 Стажёр</div>
+    </header>
+
+    <section class="resources">
+      <div class="res" id="money">$0</div>
+      <div class="res" id="stars">⭐ 0</div>
+      <div class="res" id="users">👥 0</div>
+    </section>
+    <div id="passive-label" class="passive-label">+$0/s</div>
+
+    <section id="workspace" class="workspace">
+      <div class="ide-window">
+        <div class="ide-titlebar">
+          <span class="dot red"></span>
+          <span class="dot yellow"></span>
+          <span class="dot green"></span>
+          <span class="ide-title">main.tsx — VibeIDE</span>
+        </div>
+        <div class="ide-body">
+          <div class="char-area">
+            <span id="char-emoji" class="char-emoji">🐣</span>
+            <span id="char-status" class="char-status">idle</span>
+          </div>
+          <div class="code-lines">
+            <div><span class="kw">const</span> <span class="var">vibe</span> = <span class="str">"maximum"</span>;</div>
+            <div><span class="kw">await</span> ai.<span class="fn">generate</span>(prompt);</div>
+            <div><span class="cm">// TODO: fix later (never)</span></div>
+          </div>
+        </div>
+      </div>
+      <div id="bubble" class="speech-bubble hidden"></div>
+
+      <div class="progress-wrap">
+        <div id="project-name" class="project-name">Нет активного проекта</div>
+        <div class="progress-track">
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <div id="progress-label" class="progress-label">Выбери тип проекта</div>
+      </div>
+    </section>
+
+    <section class="stats-panel">
+      <div class="stat" data-stat="energy">
+        <span class="stat-icon">⚡</span>
+        <div class="stat-bar"><div class="stat-fill"></div></div>
+        <span class="stat-label">Энергия</span>
+      </div>
+      <div class="stat" data-stat="focus">
+        <span class="stat-icon">🎯</span>
+        <div class="stat-bar"><div class="stat-fill"></div></div>
+        <span class="stat-label">Фокус</span>
+      </div>
+      <div class="stat" data-stat="hype">
+        <span class="stat-icon">🔥</span>
+        <div class="stat-bar"><div class="stat-fill"></div></div>
+        <span class="stat-label">Хайп</span>
+      </div>
+      <div class="stat" data-stat="sanity">
+        <span class="stat-icon">🧠</span>
+        <div class="stat-bar"><div class="stat-fill"></div></div>
+        <span class="stat-label">Sanity</span>
+      </div>
+    </section>
+
+    <section class="quick-actions">
+      <button id="vibe-btn" class="action-btn primary" type="button">✨ Vibe Code</button>
+      <button id="coffee-btn" class="action-btn" type="button">☕ $5</button>
+      <button id="break-btn" class="action-btn" type="button">🧘 Отдых</button>
+    </section>
+
+    <nav class="tab-nav">
+      <button class="tab-btn active" data-tab="code" type="button">💻 Код</button>
+      <button class="tab-btn" data-tab="projects" type="button">📦 Проекты</button>
+      <button class="tab-btn" data-tab="shop" type="button">🛒 Шоп</button>
+      <button class="tab-btn" data-tab="stats" type="button">📊 Статы</button>
+    </nav>
+
+    <main class="tab-content">
+      <div class="tab-panel active" data-panel="code">
+        <h2 class="panel-title">Новый проект</h2>
+        <div id="type-list" class="type-list"></div>
+      </div>
+      <div class="tab-panel" data-panel="projects">
+        <h2 class="panel-title">Твои шипменты</h2>
+        <div id="project-list" class="project-list"></div>
+      </div>
+      <div class="tab-panel" data-panel="shop">
+        <h2 class="panel-title">Апгрейды</h2>
+        <div id="shop-list" class="shop-list"></div>
+      </div>
+      <div class="tab-panel" data-panel="stats">
+        <h2 class="panel-title">Статистика</h2>
+        <div id="stats-panel" class="stats-content"></div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <div id="overlay" class="overlay hidden">
+    <div class="overlay-card">
+      <h2 id="overlay-title">—</h2>
+      <p id="overlay-text">—</p>
+      <div id="overlay-extra" class="overlay-extra hidden"></div>
+      <button id="overlay-btn" class="primary-btn" type="button">Погнали</button>
+    </div>
+  </div>
+
+  <div id="minigame-layer" class="minigame-layer hidden">
+    <canvas id="minigame-canvas"></canvas>
+    <button id="minigame-close" class="close-btn" type="button">✕</button>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/minigame.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
