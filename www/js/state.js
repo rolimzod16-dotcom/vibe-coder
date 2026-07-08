@@ -33,7 +33,15 @@ function loadState() {
   try {
     const raw = localStorage.getItem(SAVE_KEY);
     if (!raw) return DEFAULT_STATE();
-    return { ...DEFAULT_STATE(), ...JSON.parse(raw) };
+    const parsed = JSON.parse(raw);
+    const defaults = DEFAULT_STATE();
+    return {
+      ...defaults,
+      ...parsed,
+      upgrades: { ...defaults.upgrades, ...(parsed.upgrades || {}) },
+      stats: { ...defaults.stats, ...(parsed.stats || {}) },
+      projects: Array.isArray(parsed.projects) ? parsed.projects : defaults.projects,
+    };
   } catch {
     return DEFAULT_STATE();
   }
